@@ -1,0 +1,828 @@
+CODING ASSIGNMENT - 02
+
+1. Java Program to find GCD or HCF of two numbers
+
+=> package com.statements;
+
+import java.util.Scanner;
+
+public class Assignment{
+	public static int gcd(int a , int b) {
+		while(b!=0) {
+			int temp = b;
+			b = a%b;
+			a = temp;
+		}
+		return a;
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter first number");
+		int a = sc.nextInt();
+		
+		System.out.println("Enter second number");
+		int b = sc.nextInt();
+		
+		int hcf = gcd(a, b);
+		System.out.println("GCD of" + a + "and" + b + "is:" + hcf);
+	}
+}
+
+OUTPUT
+Enter first number
+18
+Enter second number
+15
+GCD of18and15is:3
+
+2. LCM of two numbers using Java
+=> package com.statements;
+
+public class Assignment{
+	public static void main(String[] args) {
+		int a = 5, b= 10;
+		int lcm = (a>b) ? a:b;
+		while(true) {
+			if(lcm % a ==0 && lcm % b == 0)
+				break;
+			lcm++;
+		}
+		System.out.println("LCM of" + a + "and"+ b + ":"+lcm);
+	}
+}
+OUTPUT
+=> LCM of5and10:10
+
+3. Binary to decimal conversion using Java
+=> package com.statements;
+import java.util.Scanner;
+
+public class Assignment {
+    public static void main(String[] args) {
+    	
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a binary number:");
+        String binary = sc.next();
+        int decimal = 0;
+        for (int i = 0; i < binary.length(); i++) {
+        	
+            decimal = decimal * 2 + (binary.charAt(i) - '0');
+        }
+        System.out.println("The decimal value is " + decimal);
+    }
+}
+OUTPUT
+Enter a binary number:
+1001
+The decimal value is 9
+
+4.Octal to Decimal conversion
+=> package com.statments;
+
+import java.util.Scanner;
+
+public class Oct_To_Dec {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter an Octal Number: ");
+        String octalNumber = sc.next();
+        sc.close();
+
+        int decimal = 0;
+        int position = 0;
+
+        for(int i = octalNumber.length()-1; i >= 0; i--) {
+
+            int bit = octalNumber.charAt(i) - '0';
+
+            decimal += bit * Math.pow(8, position);
+
+            position++;
+        }
+        System.out.println("The Decimal Number is: " + decimal);
+
+    }
+}
+
+5.Binar to Octal
+=> package co.statements;
+
+public class Bin_To_Oct {
+
+    public static void main(String[] args) {
+
+        String binaryNumber = "110101";
+
+        // Convert binary string to decimal
+        int decimal = Integer.parseInt(binaryNumber, 2);
+
+        // Convert decimal to octal string
+        String octalNumber = Integer.toOctalString(decimal);
+
+        System.out.println("The Octal Number is: " +octalNumber);
+
+
+
+
+    }
+}
+
+6.Count Numbers with java
+=> package com.statements;
+
+import java.util.Scanner;
+
+public class CountNumbersWithXDivisors {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = sc.nextInt();
+
+        System.out.print("Enter the value of x: ");
+        int x = sc.nextInt();
+
+        int count = 0;
+
+        for(int i = 0; i <= n; i++) {
+
+            int countFactor = 0;
+
+            for(int j = 1; j <= i; j++) {
+
+                if(i % j == 0) {
+                    countFactor++;
+                }
+            }
+
+            if(countFactor == x) {
+                count++;
+            }
+        }
+
+        System.out.println("Number of integers from 1 to " + n + " with exactly " + x + " divisors is: " + count);
+
+
+    }
+}
+
+7.Decimal To Binary
+=> package com.statements;
+
+import java.util.Scanner;
+
+public class Dec_To_Bin {
+
+    public static void directApproach() {
+        int decimal = 7;
+        String binaryNumber = Integer.toBinaryString(decimal);
+        System.out.println("The Binary Number is: " + binaryNumber);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a Decimal Number: ");
+        int decimal = sc.nextInt();
+
+        int binary[] = new int[20];
+        int index = 0;
+
+        while(decimal > 0) {
+            int r = decimal % 2;
+            binary[index++] = r;
+            decimal /= 2;
+        }
+
+        System.out.println("The Binary Number is:");
+        for(int j = index-1; j>=0; j--) {
+            System.out.print(binary[j] + "");
+        }
+
+        //Direct Approach
+        System.out.println("\nSolution Using direct approach ");
+        directApproach();
+
+    }
+}
+
+8.Decimal to Hexa
+=> package co.statements;
+
+public class Dec_To_Hexa {
+
+    public static void main(String[] args) {
+
+        int decimal = 1457;
+
+        String hexaDecimal = Integer.toHexString(decimal);
+
+        System.out.println("The Hexa Decimal Number is: " + hexaDecimal);
+    }
+}
+
+9.Decimal to Octal
+=> package in.practice;
+
+public class Dec_To_Oct {
+
+    public static void directApproach() {
+        int decimal = 148;
+        String octalNumber = Integer.toOctalString(decimal);
+        System.out.println("The Octal Number is: " + octalNumber);
+    }
+
+    public static void main(String[] args) {
+
+        int decimal = 148;
+
+        int octal[] = new int[20];
+        int i = 0;
+
+        while(decimal > 0) {
+            int r = decimal % 8;
+            octal[i++] = r;
+            decimal = decimal / 8;
+        }
+
+        System.out.println("The Octal Number is:");
+        for(int j = i-1; j >= 0; j--) {
+            System.out.print(octal[j] + "");
+        }
+
+        //Direct Approach
+        System.out.println("\nSolution Using direct approach ");
+        directApproach();
+
+    }
+}
+
+10.Hexa to Decimal
+=> package com.statements;
+import java.util.Scanner;
+
+public class Hexa_To_Dec {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the Hexa-Decimal Number: ");
+        String hexaNumber = sc.next();
+        sc.close();
+
+        int decimal = 0;
+        int position = 0;
+
+        for(int i = hexaNumber.length()-1; i>=0; i--) {
+
+            // Get the current digit (character) and convert it to integer
+            char digitChar = hexaNumber.charAt(i);
+            int digit;
+
+            if (Character.isDigit(digitChar)) {
+                digit = digitChar - '0'; // Convert '0'-'9' to 0-9
+            } else {
+                digit = Character.toUpperCase(digitChar) - 'A' + 10; // Convert 'A'-'F' to 10-15
+            }
+
+            decimal += digit * Math.pow(16, position);
+
+            position++;
+        }
+        System.out.println("The Decimal Number is: " + decimal);
+    }
+}
+
+11.Maximum number of Handshakes
+=> package com.statments;
+
+import java.util.Scanner;
+
+public class MaxHandshakes {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of persons: ");
+        int person = sc.nextInt();
+
+        int handShake;
+
+        handShake = ((person - 1) * person) / 2;
+
+        System.out.println("The total number of handshakes is: " + handShake);
+    }
+}
+
+12.Number Of days
+
+=> package com.statments;
+
+import java.util.Scanner;
+
+public class NumberOfDays {
+
+    public static boolean leapYear(int year) {
+
+        if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the month: ");
+        String month = sc.nextLine();
+
+        switch (month) {
+            case "January", "March", "May", "July", "August", "October", "December":
+                System.out.println("31 Days");
+                break;
+
+            case "February":
+                System.out.print("Enter the year: ");
+                int year = sc.nextInt();
+                if(leapYear(year)) {
+                    System.out.println("29 Days");
+                } else {
+                    System.out.println("28 Days");
+                }
+                break;
+
+            case "April", "June", "September", "November":
+                System.out.println("30 Days");
+                break;
+
+            default:
+                System.out.println("Invalid Month");
+        }
+    }
+}
+
+13.Number Of digits
+=> package com.statements;
+
+import java.util.Scanner;
+
+public class NumberOfDigits {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the digits: ");
+        int digits = sc.nextInt();
+
+        sc.close();
+
+        int count = 0;
+
+        while(digits > 0) {
+            int rem = digits % 10;
+            count++;
+            digits = digits / 10;
+        }
+
+        System.out.println("The number of digits entered is: " + count);
+    }
+}
+
+14.Number To words
+=> package co.statements;
+import java.util.Scanner;
+
+public class NumberToWords {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+
+        if (number > 999) {
+            int thousands = number / 1000;
+            int remainder = number % 1000;
+            System.out.println("Thousands part: " + thousands);
+            System.out.println("Remainder part: " + remainder);
+            display(thousands);
+            display(remainder);
+        } else {
+            display(number);
+        }
+
+        sc.close();
+    }
+
+    public static void display(int num) {
+        if (num == 0) {
+            System.out.println("Zero");
+            return;
+        }
+
+        String[] units = {
+                "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+                "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+                "Seventeen", "Eighteen", "Nineteen"
+        };
+
+        String[] tens = {
+                "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+        };
+
+        StringBuilder word = new StringBuilder();
+
+        if (num / 100 > 0) {
+            word.append(units[num / 100]).append(" Hundred ");
+            num %= 100;
+        }
+
+        if (num > 0) {
+            if (num < 20) {
+                word.append(units[num]);
+            } else {
+                word.append(tens[num / 10]);
+                if (num % 10 > 0) {
+                    word.append(" ").append(units[num % 10]);
+                }
+            }
+        }
+
+        System.out.println(word.toString().trim());
+    }
+}
+
+15.Occupying Seats
+=> package com.statements;
+import java.util.Scanner;
+
+public class OccupySeats {
+
+    // Function to calculate factorial
+    public static int factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
+    // Function to calculate permutation P(n, r)
+    public static int permutation(int n, int r) {
+        if (n < r) {
+            return 0;
+        }
+        return factorial(n) / factorial(n - r);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of students: ");
+        int student = sc.nextInt();
+
+        System.out.print("Enter the number of seats: ");
+        int seats = sc.nextInt();
+
+        sc.close();
+
+        int results = permutation(seats, student);
+        System.out.println("Number of permutations of " + student + " students in " + seats + " seats: " + results);
+    }
+}
+
+16.Octa to Binary
+=> package com.statements;
+
+public class Oct_To_Bin {
+
+    public static void main(String[] args) {
+
+        String octalNumber = "65";
+
+        //Converting octalNumber to decimal
+        int decimal = Integer.parseInt(octalNumber, 8);
+
+        //Converting decimal to binaryNumber
+        String binaryNumber = Integer.toBinaryString(decimal);
+
+        System.out.println("The Binary Number is: " +binaryNumber);
+
+
+
+
+    }
+}
+
+17.ctal To Decimal
+=> package co.statements;
+
+import java.util.Scanner;
+
+public class Oct_To_Dec {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter an Octal Number: ");
+        String octalNumber = sc.next();
+        sc.close();
+
+        int decimal = 0;
+        int position = 0;
+
+        for(int i = octalNumber.length()-1; i >= 0; i--) {
+
+            int bit = octalNumber.charAt(i) - '0';
+
+            decimal += bit * Math.pow(8, position);
+
+            position++;
+        }
+        System.out.println("The Decimal Number is: " + decimal);
+
+    }
+}
+
+18.Prime in Range
+=> package in.practice;
+
+public class PrimeInRange {
+
+    public static void primeRange(int start, int end) {
+
+        for(int num = start; num <=end; num++) {
+            boolean isPrime = true;
+            for(int i = 2; i < num; i++) {
+                if(num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if(isPrime) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        primeRange(1, 100);
+
+
+    }
+}
+
+19.Quadratic equation Solver
+=> package com.statements;
+import java.util.Scanner;
+
+public class QuadraticEquationSolver {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read input values for a, b, and c
+        System.out.print("Enter the value of a: ");
+        double a = sc.nextDouble();
+        System.out.print("Enter the value of b: ");
+        double b = sc.nextDouble();
+        System.out.print("Enter the value of c: ");
+        double c = sc.nextDouble();
+
+        // Calculate the determinant
+        double determinant = (b * b) - (4 * a * c);
+
+        // Determine the roots based on the value of the determinant
+        if (determinant > 0) {
+            // Two real and distinct roots
+            double root1 = (-b + Math.sqrt(determinant)) / (2 * a);
+            double root2 = (-b - Math.sqrt(determinant)) / (2 * a);
+            System.out.println("Roots are real and distinct.");
+            System.out.println("Root 1: " + root1);
+            System.out.println("Root 2: " + root2);
+        } else if (determinant == 0) {
+            // One real root (repeated root)
+            double root = -b / (2 * a);
+            System.out.println("Roots are real and repeated.");
+            System.out.println("Root: " + root);
+        } else {
+            // Complex roots
+            double realPart = -b / (2 * a);
+            double imaginaryPart = Math.sqrt(-determinant) / (2 * a);
+            System.out.println("Roots are complex and distinct.");
+            System.out.println("Root 1: " + realPart + " + " + imaginaryPart + "i");
+            System.out.println("Root 2: " + realPart + " - " + imaginaryPart + "i");
+        }
+
+        sc.close();
+    }
+}
+
+20.Quadrants
+=> package com.statements;
+
+public class Quandrants {
+
+    public static void main(String[] args) {
+
+        int x=-3, y=-33;
+
+        //To find first quadrant
+        if(x>0 && y>0)
+            System.out.println("Quadrant I");
+
+        //To find second quadrant
+        else if(x<0 && y>0)
+            System.out.println("Quadrant II");
+
+        //To find third quadrant
+        else if(x<0 && y<0) System.out.println("Quadrant III");
+
+        //To find Fourth quadrant
+        else if (x > 0 && y < 0)
+            System.out.println("Quadrant IV");
+
+        //To find origin
+        else if (x == 0 && y == 0)
+            System.out.println("Origin");
+
+        //On x-axis
+        else if (y==0 && x!=0)
+            System.out.println("x-axis");
+
+        //On y-axis
+        else if (x==0 && y!=0)
+            System.out.println("y-axis");
+
+    }
+}
+
+21.Replacing 0 with 1
+=> package com.statements;
+
+import java.util.Scanner;
+
+public class Replace_0_with_1 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the numbers with 0's: ");
+        int num = sc.nextInt();
+
+        int num2 = 0;
+
+        //Main Logic
+        if(num == 0) {
+            num2 = 1;
+        } else {
+            while(num > 0) {
+                int rem = num% 10;
+                if(rem == 0) {
+                    rem = 1;
+                }
+                num = num/10;
+                num2 = num2 * 10 + rem;
+            }
+        }
+
+        //Reversing the number
+        int reversedNum2 = 0;
+        while(num2 > 0) {
+            int rem = num2 % 10;
+            reversedNum2 = reversedNum2 * 10 + rem;
+            num2 = num2 / 10;
+        }
+        System.out.println("Modified Number : " + reversedNum2);
+    }
+}
+
+22.Sum Of Two Prime Numbers
+=> package com.statements;
+
+import java.util.Scanner;
+
+public class SumOfTwoPrime {
+
+    public static boolean primeCheck(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= n/2; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        int flag = 0;
+
+        for(int i = 2; i <= num/2; i++) {
+
+            if(primeCheck(i) && primeCheck(num - i)) {
+                System.out.println(i + " " + (num - i));
+                flag = 1;
+            }
+        }
+        if(flag == 0) {
+            System.out.println("Not Possible");
+        }
+    }
+}
+
+23.X Digit Occuring
+=> package com.statements;
+import java.util.Scanner;
+
+public class X_Digit_Occurs {
+
+    public static void usingArrays(Scanner sc) {
+
+        System.out.print("Enter the size of array: ");
+        int size = sc.nextInt();
+
+        int arr[] = new int[size];
+
+        //Adding Elements
+        System.out.println("Enter the array elements");
+        for(int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.println("Enter the value of X: ");
+        int x = sc.nextInt();
+
+        int count = 0;
+
+        //Printing Elements
+        for(int val : arr) {
+            System.out.print(val + " ");
+
+            if(val == x) {
+                count++;
+            }
+        }
+
+        System.out.println("\nThe number " + x + " is found " + count +" times");
+
+    }
+
+    public static void directMethod(Scanner sc) {
+        System.out.print("Enter the digits: ");
+        int digits = sc.nextInt();
+
+        System.out.print("Enter the value of X: ");
+        int x = sc.nextInt();
+
+        int count = 0;
+        while(digits > 0) {
+            int rem = digits % 10;
+            if(rem == x) {
+                count++;
+            }
+            digits /= 10;
+        }
+        System.out.println("\nThe number " + x + " is found " + count +" times");
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        //usingArrays(sc);
+
+        directMethod(sc);
+
+	}
+   
+    }
+
+
+
+
+
+
+
+    
